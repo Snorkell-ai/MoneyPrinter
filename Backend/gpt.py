@@ -13,6 +13,7 @@ def generate_script(video_subject: str) -> str:
 
     Returns:
         str: The script for the video.
+            Generate a script for a video based on the provided subject. The script should be related to the subject of the video and should not contain unnecessary information. The function returns the generated script as a string.
     """
 
     # Build prompt
@@ -72,7 +73,6 @@ def get_search_terms(video_subject: str, amount: int, script: str) -> List[str]:
 
     Raises:
         Exception: If there is an issue with loading or parsing the response.
-            Note:
 
     Examples:
         Example usage of the function:
@@ -133,15 +133,19 @@ def get_search_terms(video_subject: str, amount: int, script: str) -> List[str]:
     return search_terms
 
 def generate_metadata(video_subject: str, script: str) -> Tuple[str, str, List[str]]:  
-    """    Generate metadata for a YouTube video, including the title, description, and keywords.
+    """      Generate metadata for a YouTube video, including the title, description, and keywords.
 
-    Args:
-        video_subject (str): The subject of the video.
-        script (str): The script of the video.
+      Args:
+          video_subject (str): The subject of the video.
+          script (str): The script of the video.
 
-    Returns:
-        Tuple[str, str, List[str]]: The title, description, and keywords for the video.
-    """  
+      Returns:
+          Tuple[str, str, List[str]]: The title, description, and keywords for the video.
+              This function takes the subject and script of a YouTube video and generates a catchy and SEO-friendly title,
+              a brief and engaging description, and a list of keywords for the video. It uses AI models to create the title and
+              description based on the provided prompts and extracts the necessary information from the responses. The keywords
+              are generated using the get_search_terms function with the given parameters.
+      """  
   
     # Build prompt for title  
     title_prompt = f"""  

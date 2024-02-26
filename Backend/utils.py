@@ -9,9 +9,6 @@ def clean_dir(path: str) -> None:
     Args:
         path (str): Path to directory
 
-    Returns:
-        None
-
     Raises:
         OSError: If the directory does not exist or cannot be accessed
     """
