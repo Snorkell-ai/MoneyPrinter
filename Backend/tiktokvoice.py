@@ -106,6 +106,8 @@ def split_string(string: str, chunk_size: int) -> List[str]:
 def get_api_response() -> requests.Response:
     """    Get the API response from the specified endpoint.
 
+    This function sends a GET request to the specified endpoint and returns the response object from the API.
+
     Returns:
         requests.Response: The response object from the API.
 
@@ -127,8 +129,6 @@ def save_audio_file(base64_data: str, filename: str = "output.mp3") -> None:
         base64_data (str): The base64 encoded audio data.
         filename (str?): The name of the output file. Defaults to "output.mp3".
 
-    Returns:
-        None
 
     Raises:
         TypeError: If base64_data is not a string.
@@ -153,7 +153,6 @@ def generate_audio(text: str, voice: str) -> bytes:
         bytes: The audio data in bytes.
 
     Raises:
-        This function may raise exceptions of the following types:
         requests.exceptions.RequestException: If a request error occurs.
     """
 
@@ -179,8 +178,6 @@ def tts(
         filename (str?): The name of the output audio file. Defaults to "output.mp3".
         play_sound (bool?): Flag to indicate whether to play the generated audio file. Defaults to False.
 
-    Returns:
-        None
 
     Raises:
         ValueError: If no voice is selected or the selected voice does not exist.
@@ -242,8 +239,6 @@ def tts(
                     text_part (str): The text part for which audio needs to be generated.
                     index (int): The index of the text part.
 
-                Returns:
-                    None
 
                 Raises:
                     ValueError: If the provided text_part is empty or None.

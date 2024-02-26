@@ -79,6 +79,7 @@ def __generate_subtitles_locally(sentences: list[str], audio_clips: list[AudioFi
 
         Returns:
             str: SRT time format string in the format HH:MM:SS,mmm
+                Converts the given total seconds to the SRT time format, which is in the format HH:MM:SS,mmm. If the total_seconds is 0, it returns '0:00:00,0'. Otherwise, it converts the total_seconds to timedelta format and then to the SRT time format string.
         """
 
         # Convert total seconds to the SRT time format: HH:MM:SS,mmm
@@ -125,7 +126,7 @@ def generate_subtitles(audio_path: str, sentences: list[str], audio_clips: list[
             max_chars (int): The maximum number of characters allowed in each subtitle line. Defaults to 10.
 
         Returns:
-            None
+            None: This function does not return any value.
         """
 
         # Equalize subtitles
@@ -195,7 +196,7 @@ def combine_videos(video_paths: List[str], max_duration: int) -> str:
 
 
 def generate_video(combined_video_path: str, tts_path: str, subtitles_path: str) -> str:
-    """    This function creates the final video, with subtitles and audio.
+    """    Create the final video with subtitles and audio.
 
     Args:
         combined_video_path (str): The path to the combined video.
@@ -204,6 +205,7 @@ def generate_video(combined_video_path: str, tts_path: str, subtitles_path: str)
 
     Returns:
         str: The path to the final video.
+            This function creates the final video by combining the combined video, text-to-speech audio, and subtitles. It uses the provided paths to locate the necessary files and generates the final video with subtitles burned into it and audio added.
     """
     # Make a generator that returns a TextClip when called with consecutive
     generator = lambda txt: TextClip(
