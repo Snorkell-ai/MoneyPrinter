@@ -102,6 +102,8 @@ def initialize_upload(youtube, options):
 
     Returns:
         The result of the resumable upload process.
+            
+            This function initializes the video upload process to YouTube by preparing the necessary metadata and calling the API's videos.insert method to create and upload the video. It takes an authorized `youtube` instance and a dictionary of `options` including keywords, title, description, category, and privacy status for the video. If keywords are provided, they are split into a list. The video metadata is then constructed and passed to the videos.insert method along with the media file for upload. The result of the resumable upload process is returned.
     """
   
     tags = None  
@@ -133,8 +135,7 @@ def initialize_upload(youtube, options):
 # This method implements an exponential backoff strategy to resume a  
 # failed upload.  
 def resumable_upload(insert_request):
-    """    This method implements an exponential backoff strategy to resume a
-    failed upload.
+    """    This method implements an exponential backoff strategy to resume a failed upload.
 
     Args:
         insert_request: The insert request for the upload.
