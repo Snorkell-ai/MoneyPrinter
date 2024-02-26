@@ -13,6 +13,9 @@ def generate_script(video_subject: str) -> str:
 
     Returns:
         str: The script for the video.
+            Generate a script for a video based on the provided subject. The script should be related to the subject of the video and should not contain unnecessary introductions or references to the prompt. The function returns the generated script as a string.
+            
+            If the GPT model returns an empty response, the function prints a message and returns None.
     """
 
     # Build prompt
@@ -72,11 +75,17 @@ def get_search_terms(video_subject: str, amount: int, script: str) -> List[str]:
 
     Raises:
         Exception: If there is an issue with loading or parsing the response.
-            Note:
 
     Examples:
         Example usage of the function:
-        get_search_terms("nature", 5, "This is a script about nature and wildlife.")
+            get_search_terms("nature", 5, "This is a script about nature and wildlife.")
+        
+        The function generates a JSON-Array of search terms for stock videos based on the subject of the video.
+        It uses the provided video_subject, amount, and script to create a prompt and then generates search terms using a chat completion model.
+        The response is then parsed and returned as a list of search terms related to the video subject.
+
+    Note:
+        The function must only return the JSON-Array of strings and should not return anything else or the script.
     """
 
     # Build prompt
@@ -133,15 +142,15 @@ def get_search_terms(video_subject: str, amount: int, script: str) -> List[str]:
     return search_terms
 
 def generate_metadata(video_subject: str, script: str) -> Tuple[str, str, List[str]]:  
-    """    Generate metadata for a YouTube video, including the title, description, and keywords.
+    """      Generate metadata for a YouTube video, including the title, description, and keywords.
 
-    Args:
-        video_subject (str): The subject of the video.
-        script (str): The script of the video.
+      Args:
+          video_subject (str): The subject of the video.
+          script (str): The script of the video.
 
-    Returns:
-        Tuple[str, str, List[str]]: The title, description, and keywords for the video.
-    """  
+      Returns:
+          Tuple[str, str, List[str]]: The title, description, and keywords for the video.
+      """  
   
     # Build prompt for title  
     title_prompt = f"""  
